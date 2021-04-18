@@ -3,9 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroySourceRequest;
-use App\Http\Requests\StoreSourceRequest;
-use App\Http\Requests\UpdateSourceRequest;
 use App\Models\Source;
 use Gate;
 use Illuminate\Http\Request;
@@ -29,7 +26,7 @@ class SourceController extends Controller
         return view('admin.sources.create');
     }
 
-    public function store(StoreSourceRequest $request)
+    public function store(Request $request)
     {
         $source = Source::create($request->all());
 
@@ -43,7 +40,7 @@ class SourceController extends Controller
         return view('admin.sources.edit', compact('source'));
     }
 
-    public function update(UpdateSourceRequest $request, Source $source)
+    public function update(Request $request, Source $source)
     {
         $source->update($request->all());
 
@@ -68,7 +65,7 @@ class SourceController extends Controller
         return back();
     }
 
-    public function massDestroy(MassDestroySourceRequest $request)
+    public function massDestroy(Request $request)
     {
         Source::whereIn('id', request('ids'))->delete();
 

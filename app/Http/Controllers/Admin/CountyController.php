@@ -3,9 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyCountyRequest;
-use App\Http\Requests\StoreCountyRequest;
-use App\Http\Requests\UpdateCountyRequest;
 use App\Models\County;
 use Gate;
 use Illuminate\Http\Request;
@@ -29,7 +26,7 @@ class CountyController extends Controller
         return view('admin.counties.create');
     }
 
-    public function store(StoreCountyRequest $request)
+    public function store(Request $request)
     {
         $county = County::create($request->all());
 
@@ -43,7 +40,7 @@ class CountyController extends Controller
         return view('admin.counties.edit', compact('county'));
     }
 
-    public function update(UpdateCountyRequest $request, County $county)
+    public function update(Request $request, County $county)
     {
         $county->update($request->all());
 
@@ -68,7 +65,7 @@ class CountyController extends Controller
         return back();
     }
 
-    public function massDestroy(MassDestroyCountyRequest $request)
+    public function massDestroy(Request $request)
     {
         County::whereIn('id', request('ids'))->delete();
 

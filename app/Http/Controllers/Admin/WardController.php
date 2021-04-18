@@ -3,9 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyWardRequest;
-use App\Http\Requests\StoreWardRequest;
-use App\Http\Requests\UpdateWardRequest;
 use App\Models\Constituency;
 use App\Models\County;
 use App\Models\Ward;
@@ -39,7 +36,7 @@ class WardController extends Controller
         return view('admin.wards.create', compact('counties', 'constituencies'));
     }
 
-    public function store(StoreWardRequest $request)
+    public function store(Request $request)
     {
         $ward = Ward::create($request->all());
 
@@ -59,7 +56,7 @@ class WardController extends Controller
         return view('admin.wards.edit', compact('counties', 'constituencies', 'ward'));
     }
 
-    public function update(UpdateWardRequest $request, Ward $ward)
+    public function update(Request $request, Ward $ward)
     {
         $ward->update($request->all());
 
@@ -84,7 +81,7 @@ class WardController extends Controller
         return back();
     }
 
-    public function massDestroy(MassDestroyWardRequest $request)
+    public function massDestroy(Request $request)
     {
         Ward::whereIn('id', request('ids'))->delete();
 

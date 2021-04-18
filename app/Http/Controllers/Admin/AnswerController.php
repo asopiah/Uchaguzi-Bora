@@ -4,9 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
-use App\Http\Requests\MassDestroyAnswerRequest;
-use App\Http\Requests\StoreAnswerRequest;
-use App\Http\Requests\UpdateAnswerRequest;
 use App\Models\Answer;
 use App\Models\Constituency;
 use App\Models\Country;
@@ -73,7 +70,7 @@ class AnswerController extends Controller
         return view('admin.answers.create', compact('questions', 'countries', 'counties', 'sub_counties', 'constituencies', 'wards', 'offices', 'sources'));
     }
 
-    public function store(StoreAnswerRequest $request)
+    public function store(Request $request)
     {
         $answer = Answer::create($request->all());
         $answer->counties()->sync($request->input('counties', []));
@@ -122,7 +119,7 @@ class AnswerController extends Controller
         return view('admin.answers.edit', compact('questions', 'countries', 'counties', 'sub_counties', 'constituencies', 'wards', 'offices', 'sources', 'answer'));
     }
 
-    public function update(UpdateAnswerRequest $request, Answer $answer)
+    public function update(Request $request, Answer $answer)
     {
         $answer->update($request->all());
         $answer->counties()->sync($request->input('counties', []));
@@ -180,7 +177,7 @@ class AnswerController extends Controller
         return back();
     }
 
-    public function massDestroy(MassDestroyAnswerRequest $request)
+    public function massDestroy(Request $request)
     {
         Answer::whereIn('id', request('ids'))->delete();
 

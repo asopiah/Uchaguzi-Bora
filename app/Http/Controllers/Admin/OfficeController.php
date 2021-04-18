@@ -3,9 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyOfficeRequest;
-use App\Http\Requests\StoreOfficeRequest;
-use App\Http\Requests\UpdateOfficeRequest;
 use App\Models\Office;
 use Gate;
 use Illuminate\Http\Request;
@@ -29,7 +26,7 @@ class OfficeController extends Controller
         return view('admin.offices.create');
     }
 
-    public function store(StoreOfficeRequest $request)
+    public function store(Request $request)
     {
         $office = Office::create($request->all());
 
@@ -43,7 +40,7 @@ class OfficeController extends Controller
         return view('admin.offices.edit', compact('office'));
     }
 
-    public function update(UpdateOfficeRequest $request, Office $office)
+    public function update(Request $request, Office $office)
     {
         $office->update($request->all());
 
@@ -66,7 +63,7 @@ class OfficeController extends Controller
         return back();
     }
 
-    public function massDestroy(MassDestroyOfficeRequest $request)
+    public function massDestroy(Request $request)
     {
         Office::whereIn('id', request('ids'))->delete();
 

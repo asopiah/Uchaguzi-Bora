@@ -3,9 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyConstituencyRequest;
-use App\Http\Requests\StoreConstituencyRequest;
-use App\Http\Requests\UpdateConstituencyRequest;
 use App\Models\Constituency;
 use App\Models\County;
 use Gate;
@@ -34,7 +31,7 @@ class ConstituencyController extends Controller
         return view('admin.constituencies.create', compact('counties'));
     }
 
-    public function store(StoreConstituencyRequest $request)
+    public function store(Request $request)
     {
         $constituency = Constituency::create($request->all());
 
@@ -52,7 +49,7 @@ class ConstituencyController extends Controller
         return view('admin.constituencies.edit', compact('counties', 'constituency'));
     }
 
-    public function update(UpdateConstituencyRequest $request, Constituency $constituency)
+    public function update(Request $request, Constituency $constituency)
     {
         $constituency->update($request->all());
 
@@ -77,7 +74,7 @@ class ConstituencyController extends Controller
         return back();
     }
 
-    public function massDestroy(MassDestroyConstituencyRequest $request)
+    public function massDestroy(Request $request)
     {
         Constituency::whereIn('id', request('ids'))->delete();
 

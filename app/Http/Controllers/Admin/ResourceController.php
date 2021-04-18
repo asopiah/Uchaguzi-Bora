@@ -3,9 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyResourceRequest;
-use App\Http\Requests\StoreResourceRequest;
-use App\Http\Requests\UpdateResourceRequest;
 use App\Models\Resource;
 use Gate;
 use Illuminate\Http\Request;
@@ -29,7 +26,7 @@ class ResourceController extends Controller
         return view('admin.resources.create');
     }
 
-    public function store(StoreResourceRequest $request)
+    public function store(Request $request)
     {
         $resource = Resource::create($request->all());
 
@@ -43,7 +40,7 @@ class ResourceController extends Controller
         return view('admin.resources.edit', compact('resource'));
     }
 
-    public function update(UpdateResourceRequest $request, Resource $resource)
+    public function update(Request $request, Resource $resource)
     {
         $resource->update($request->all());
 
@@ -68,7 +65,7 @@ class ResourceController extends Controller
         return back();
     }
 
-    public function massDestroy(MassDestroyResourceRequest $request)
+    public function massDestroy(Request $request)
     {
         Resource::whereIn('id', request('ids'))->delete();
 

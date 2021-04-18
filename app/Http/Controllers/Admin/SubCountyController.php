@@ -3,9 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroySubCountyRequest;
-use App\Http\Requests\StoreSubCountyRequest;
-use App\Http\Requests\UpdateSubCountyRequest;
 use App\Models\County;
 use App\Models\SubCounty;
 use Gate;
@@ -34,7 +31,7 @@ class SubCountyController extends Controller
         return view('admin.subCounties.create', compact('counties'));
     }
 
-    public function store(StoreSubCountyRequest $request)
+    public function store(Request $request)
     {
         $subCounty = SubCounty::create($request->all());
 
@@ -52,7 +49,7 @@ class SubCountyController extends Controller
         return view('admin.subCounties.edit', compact('counties', 'subCounty'));
     }
 
-    public function update(UpdateSubCountyRequest $request, SubCounty $subCounty)
+    public function update(Request $request, SubCounty $subCounty)
     {
         $subCounty->update($request->all());
 
@@ -77,7 +74,7 @@ class SubCountyController extends Controller
         return back();
     }
 
-    public function massDestroy(MassDestroySubCountyRequest $request)
+    public function massDestroy(Request $request)
     {
         SubCounty::whereIn('id', request('ids'))->delete();
 

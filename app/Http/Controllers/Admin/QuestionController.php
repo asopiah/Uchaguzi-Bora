@@ -3,9 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyQuestionRequest;
-use App\Http\Requests\StoreQuestionRequest;
-use App\Http\Requests\UpdateQuestionRequest;
 use App\Models\Question;
 use App\Models\Resource;
 use Gate;
@@ -34,7 +31,7 @@ class QuestionController extends Controller
         return view('admin.questions.create', compact('resources'));
     }
 
-    public function store(StoreQuestionRequest $request)
+    public function store(Request $request)
     {
         $question = Question::create($request->all());
         $question->resources()->sync($request->input('resources', []));
@@ -53,7 +50,7 @@ class QuestionController extends Controller
         return view('admin.questions.edit', compact('resources', 'question'));
     }
 
-    public function update(UpdateQuestionRequest $request, Question $question)
+    public function update(Request $request, Question $question)
     {
         $question->update($request->all());
         $question->resources()->sync($request->input('resources', []));
@@ -79,7 +76,7 @@ class QuestionController extends Controller
         return back();
     }
 
-    public function massDestroy(MassDestroyQuestionRequest $request)
+    public function massDestroy(Request $request)
     {
         Question::whereIn('id', request('ids'))->delete();
 

@@ -3,9 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyPermissionRequest;
-use App\Http\Requests\StorePermissionRequest;
-use App\Http\Requests\UpdatePermissionRequest;
 use App\Models\Permission;
 use Gate;
 use Illuminate\Http\Request;
@@ -29,7 +26,7 @@ class PermissionsController extends Controller
         return view('admin.permissions.create');
     }
 
-    public function store(StorePermissionRequest $request)
+    public function store(Request $request)
     {
         $permission = Permission::create($request->all());
 
@@ -43,7 +40,7 @@ class PermissionsController extends Controller
         return view('admin.permissions.edit', compact('permission'));
     }
 
-    public function update(UpdatePermissionRequest $request, Permission $permission)
+    public function update(Request $request, Permission $permission)
     {
         $permission->update($request->all());
 
@@ -66,7 +63,7 @@ class PermissionsController extends Controller
         return back();
     }
 
-    public function massDestroy(MassDestroyPermissionRequest $request)
+    public function massDestroy(Request $request)
     {
         Permission::whereIn('id', request('ids'))->delete();
 

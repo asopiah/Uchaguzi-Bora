@@ -3,9 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyCountryRequest;
-use App\Http\Requests\StoreCountryRequest;
-use App\Http\Requests\UpdateCountryRequest;
 use App\Models\Country;
 use Gate;
 use Illuminate\Http\Request;
@@ -29,7 +26,7 @@ class CountriesController extends Controller
         return view('admin.countries.create');
     }
 
-    public function store(StoreCountryRequest $request)
+    public function store(Request $request)
     {
         $country = Country::create($request->all());
 
@@ -43,7 +40,7 @@ class CountriesController extends Controller
         return view('admin.countries.edit', compact('country'));
     }
 
-    public function update(UpdateCountryRequest $request, Country $country)
+    public function update(Request $request, Country $country)
     {
         $country->update($request->all());
 
@@ -68,7 +65,7 @@ class CountriesController extends Controller
         return back();
     }
 
-    public function massDestroy(MassDestroyCountryRequest $request)
+    public function massDestroy(Request $request)
     {
         Country::whereIn('id', request('ids'))->delete();
 

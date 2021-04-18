@@ -3,9 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyRespondentRequest;
-use App\Http\Requests\StoreRespondentRequest;
-use App\Http\Requests\UpdateRespondentRequest;
 use App\Models\Respondent;
 use App\Models\RespondentCategory;
 use Gate;
@@ -34,7 +31,7 @@ class RespondentController extends Controller
         return view('admin.respondents.create', compact('respondentcategories'));
     }
 
-    public function store(StoreRespondentRequest $request)
+    public function store(Request $request)
     {
         $respondent = Respondent::create($request->all());
 
@@ -52,7 +49,7 @@ class RespondentController extends Controller
         return view('admin.respondents.edit', compact('respondentcategories', 'respondent'));
     }
 
-    public function update(UpdateRespondentRequest $request, Respondent $respondent)
+    public function update(Request $request, Respondent $respondent)
     {
         $respondent->update($request->all());
 
@@ -77,7 +74,7 @@ class RespondentController extends Controller
         return back();
     }
 
-    public function massDestroy(MassDestroyRespondentRequest $request)
+    public function massDestroy(Request $request)
     {
         Respondent::whereIn('id', request('ids'))->delete();
 

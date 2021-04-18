@@ -3,9 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyRespondentCategoryRequest;
-use App\Http\Requests\StoreRespondentCategoryRequest;
-use App\Http\Requests\UpdateRespondentCategoryRequest;
 use App\Models\RespondentCategory;
 use Gate;
 use Illuminate\Http\Request;
@@ -29,7 +26,7 @@ class RespondentCategoryController extends Controller
         return view('admin.respondentCategories.create');
     }
 
-    public function store(StoreRespondentCategoryRequest $request)
+    public function store(Request $request)
     {
         $respondentCategory = RespondentCategory::create($request->all());
 
@@ -43,7 +40,7 @@ class RespondentCategoryController extends Controller
         return view('admin.respondentCategories.edit', compact('respondentCategory'));
     }
 
-    public function update(UpdateRespondentCategoryRequest $request, RespondentCategory $respondentCategory)
+    public function update(Request $request, RespondentCategory $respondentCategory)
     {
         $respondentCategory->update($request->all());
 
@@ -68,7 +65,7 @@ class RespondentCategoryController extends Controller
         return back();
     }
 
-    public function massDestroy(MassDestroyRespondentCategoryRequest $request)
+    public function massDestroy(Request $request)
     {
         RespondentCategory::whereIn('id', request('ids'))->delete();
 
