@@ -120,4 +120,9 @@ class Answer extends Model implements HasMedia
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function respondent()
+    {
+        return $this->belongsTo(Respondent::class, 'respondent_id');
+    }
 }

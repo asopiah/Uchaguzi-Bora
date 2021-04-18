@@ -35,6 +35,11 @@ class Respondent extends Model
         'deleted_at',
     ];
 
+    public function respondentAnswers()
+    {
+        return $this->hasMany(Answer::class, 'respondent_id', 'id');
+    }
+
     public function respondentcategory()
     {
         return $this->belongsTo(RespondentCategory::class, 'respondentcategory_id');
