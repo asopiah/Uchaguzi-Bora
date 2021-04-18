@@ -13,7 +13,7 @@ class CreateRespondentsTable extends Migration
      */
     public function up()
     {
-        Schema::table('respondents', function (Blueprint $table) {
+        Schema::create('respondents', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('respondentcategory_id')->nullable();
             $table->foreign('respondentcategory_id', 'respondentcategory_fk_3705076')->references('id')->on('respondent_categories');

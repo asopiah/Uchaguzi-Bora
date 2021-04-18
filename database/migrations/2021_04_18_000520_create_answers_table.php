@@ -13,7 +13,7 @@ class CreateAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::table('answers', function (Blueprint $table) {
+        Schema::create('answers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('date')->nullable();
             $table->string('event')->nullable();
@@ -22,6 +22,9 @@ class CreateAnswersTable extends Migration
             $table->foreign('question_id', 'question_fk_3705093')->references('id')->on('questions');
             $table->unsignedBigInteger('country_id')->nullable();
             $table->foreign('country_id', 'country_fk_3705156')->references('id')->on('countries');
+
+            $table->unsignedBigInteger('respondent_id')->nullable();
+            $table->foreign('respondent_id', 'respondent_fk_3706231')->references('id')->on('respondents');
 
             $table->string('other_place')->nullable();
             $table->string('url')->nullable();

@@ -13,7 +13,7 @@ class CreateWardsTable extends Migration
      */
     public function up()
     {
-        Schema::table('wards', function (Blueprint $table) {
+        Schema::create('wards', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
 

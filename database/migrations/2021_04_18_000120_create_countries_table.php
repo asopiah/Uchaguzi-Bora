@@ -13,7 +13,7 @@ class CreateCountriesTable extends Migration
      */
     public function up()
     {
-        Schema::table('countries', function (Blueprint $table) {
+        Schema::create('countries', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->string('short_code')->nullable();

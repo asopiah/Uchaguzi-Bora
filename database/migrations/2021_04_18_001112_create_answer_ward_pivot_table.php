@@ -13,7 +13,7 @@ class CreateAnswerWardPivotTable extends Migration
      */
     public function up()
     {
-        Schema::table('answer_ward', function (Blueprint $table) {
+        Schema::create('answer_ward', function (Blueprint $table) {
             $table->unsignedBigInteger('answer_id');
             $table->foreign('answer_id', 'answer_id_fk_3705160')->references('id')->on('answers')->onDelete('cascade');
             $table->unsignedBigInteger('ward_id');

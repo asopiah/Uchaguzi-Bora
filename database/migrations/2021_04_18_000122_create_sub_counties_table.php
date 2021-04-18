@@ -13,7 +13,7 @@ class CreateSubCountiesTable extends Migration
      */
     public function up()
     {
-        Schema::table('sub_counties', function (Blueprint $table) {
+        Schema::create('sub_counties', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('county_id')->nullable();
             $table->foreign('county_id', 'county_fk_3705629')->references('id')->on('counties');

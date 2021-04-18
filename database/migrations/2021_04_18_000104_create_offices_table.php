@@ -13,7 +13,7 @@ class CreateOfficesTable extends Migration
      */
     public function up()
     {
-        Schema::table('offices', function (Blueprint $table) {
+        Schema::create('offices', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->unique();
             $table->timestamps();

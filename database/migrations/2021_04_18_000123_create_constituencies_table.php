@@ -13,7 +13,7 @@ class CreateConstituenciesTable extends Migration
      */
     public function up()
     {
-        Schema::table('constituencies', function (Blueprint $table) {
+        Schema::create('constituencies', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->unique();
             $table->unsignedBigInteger('county_id');

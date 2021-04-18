@@ -13,7 +13,7 @@ class CreateQuestionResourcePivotTable extends Migration
      */
     public function up()
     {
-        Schema::table('question_resource', function (Blueprint $table) {
+        Schema::create('question_resource', function (Blueprint $table) {
             $table->unsignedBigInteger('question_id');
             $table->foreign('question_id', 'question_id_fk_3705087')->references('id')->on('questions')->onDelete('cascade');
             $table->unsignedBigInteger('resource_id');

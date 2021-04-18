@@ -13,7 +13,7 @@ class CreateAnswerCountyPivotTable extends Migration
      */
     public function up()
     {
-        Schema::table('answer_county', function (Blueprint $table) {
+        Schema::create('answer_county', function (Blueprint $table) {
             $table->unsignedBigInteger('answer_id');
             $table->foreign('answer_id', 'answer_id_fk_3705157')->references('id')->on('answers')->onDelete('cascade');
             $table->unsignedBigInteger('county_id');

@@ -13,7 +13,7 @@ class CreateCountiesTable extends Migration
      */
     public function up()
     {
-        Schema::table('counties', function (Blueprint $table) {
+        Schema::create('counties', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->unique();
             $table->string('county_code')->unique();

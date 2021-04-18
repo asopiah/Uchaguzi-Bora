@@ -13,7 +13,7 @@ class CreateAnswerOfficePivotTable extends Migration
      */
     public function up()
     {
-        Schema::table('answer_office', function (Blueprint $table) {
+        Schema::create('answer_office', function (Blueprint $table) {
             $table->unsignedBigInteger('answer_id');
             $table->foreign('answer_id', 'answer_id_fk_3705220')->references('id')->on('answers')->onDelete('cascade');
             $table->unsignedBigInteger('office_id');
