@@ -10,6 +10,8 @@ use App\Models\Country;
 use App\Models\County;
 use App\Models\Office;
 use App\Models\Question;
+use App\Models\Respondent;
+use App\Models\RespondentCategory;
 use App\Models\Source;
 use App\Models\SubCounty;
 use App\Models\Ward;
@@ -49,7 +51,7 @@ class AnswerController extends Controller
 
     public function create()
     {
-        abort_if(Gate::denies('answer_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('answer_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $questions = Question::all()->pluck('question', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -67,11 +69,16 @@ class AnswerController extends Controller
 
         $sources = Source::all()->pluck('name', 'id');
 
-        return view('admin.answers.create', compact('questions', 'countries', 'counties', 'sub_counties', 'constituencies', 'wards', 'offices', 'sources'));
+        $respondents = Respondent::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $respondentcategories = RespondentCategory::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('front.questionier.create', compact('questions', 'countries', 'counties', 'sub_counties','respondentcategories', 'constituencies', 'wards', 'offices', 'sources','respondents'));
     }
 
     public function store(Request $request)
     {
+        $respondent = Respondent::create($request->all());
+
         $answer = Answer::create($request->all());
         $answer->counties()->sync($request->input('counties', []));
         $answer->sub_counties()->sync($request->input('sub_counties', []));
