@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'Uchanguzi Bora',
+    'site_title' => 'Uchaguzi Huru',
 ];

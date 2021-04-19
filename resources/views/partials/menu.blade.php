@@ -83,7 +83,7 @@
                     <i class="fa-fw fas fa-parachute-box c-sidebar-nav-icon">
 
                     </i>
-                    {{ trans('cruds.resource.title') }}
+                    National Resource
                 </a>
             </li>
         @endcan
@@ -103,7 +103,7 @@
                     <i class="fa-fw fab fa-adn c-sidebar-nav-icon">
 
                     </i>
-                    {{ trans('cruds.answer.title') }}
+                    Misuse Reported
                 </a>
             </li>
         @endcan
@@ -163,7 +163,7 @@
                     <i class="fa-fw fas fa-hotel c-sidebar-nav-icon">
 
                     </i>
-                    {{ trans('cruds.office.title') }}
+                    {{ trans('cruds.office.title') }} / Person
                 </a>
             </li>
         @endcan

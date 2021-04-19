@@ -1,8 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ trans('panel.site_title') }}</title>
-    @livewireStyles
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
+    <!-- Ionicons CSS-->
+    <link rel="stylesheet" href="{{asset('css/ionicons.min.css')}}">
+    <!-- Device mockups CSS-->
+    <link rel="stylesheet" href="{{asset('css/device-mockups.css')}}">
+    <!-- Google fonts - Source Sans Pro-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <!-- Swiper sLider-->
+    <link rel="stylesheet" href="{{asset('vendor/swiper/css/swiper.min.css')}}">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="{{asset('css/style.default.css')}}" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="{{asset('img/favicon.png')}}">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -19,34 +39,41 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
-    @yield('styles')
-    @livewireScripts
-
-    <link href="{{ asset('css/wizard.css') }}" rel="stylesheet" id="bootstrap-css">
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 </head>
 <body>
-
-<div class="container">
-
-    <div class="card">
-        <div class="card-header">
-{{--
-            Report to us any Misuse of National Resources
---}}
+<!-- navbar-->
+<header class="header">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <!-- Navbar brand--><a href="{{route('report.index')}}" class="navbar-brand font-weight-bold">{{ trans('panel.site_title') }}</a>
         </div>
-        <div class="card-body">
-            {{--<livewire:wizard />--}}
-            @yield('content')
-           {{-- @livewire('wizard')--}}
-        </div>
-    </div>
+    </nav>
+</header>
+{{--content to go here--}}
 
-</div>
+@yield('content')
 
+<!-- JavaScript files-->
+<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('vendor/popper.js/umd/popper.min.js')}}"> </script>
+<script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('vendor/jquery.cookie/jquery.cookie.js')}}"> </script>
+<script src="{{asset('vendor/swiper/js/swiper.min.js')}}"></script>
+<script src="{{asset('js/front.js')}}"></script>
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
+<!---->
+<script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-XXXXX-X');ga('send','pageview');
+</script>
 </body>
-
-@livewireScripts
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -187,4 +214,5 @@
 
 
 </html>
+
 

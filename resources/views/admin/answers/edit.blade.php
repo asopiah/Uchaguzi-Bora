@@ -208,7 +208,7 @@
                     @endif
                     <span class="help-block">{{ trans('cruds.answer.fields.file_helper') }}</span>
                 </div>
-                <div class="form-group">
+                {{--<div class="form-group">
                     <label class="required" for="respondent_id">{{ trans('cruds.answer.fields.respondent') }}</label>
                     <select class="form-control select2 {{ $errors->has('respondent') ? 'is-invalid' : '' }}" name="respondent_id" id="respondent_id" required>
                         @foreach($respondents as $id => $respondent)
@@ -221,7 +221,7 @@
                         </div>
                     @endif
                     <span class="help-block">{{ trans('cruds.answer.fields.respondent_helper') }}</span>
-                </div>
+                </div>--}}
                 <div class="form-group">
                     <button class="btn btn-danger" type="submit">
                         {{ trans('global.save') }}
