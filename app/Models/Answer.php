@@ -59,11 +59,15 @@ class Answer extends Model implements HasMedia
     {
         return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
     }
+    public function getDateFormat()
+    {
+        return 'Y-m-d H:i:s.u';
+    }
 
-    public function setDateAttribute($value)
+   /* public function setDateAttribute($value)
     {
         $this->attributes['date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
-    }
+    }*/
 
     public function country()
     {
