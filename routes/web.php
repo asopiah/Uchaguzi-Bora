@@ -9,6 +9,7 @@ Route::get('/uchaguzi-huru', 'ReportController@index')->name('report.index');
 Route::get('/report', 'ReportController@create')->name('report.create');
 Route::post('report', 'ReportController@store')->name('report.store');
 Route::get('/thanks', 'ReportController@thanks')->name('thanks');
+Route::get('/show-reports', 'ReportController@show')->name('show-reports');
 
 Route::redirect('/admin', '/login');
 Route::get('/home', function () {

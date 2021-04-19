@@ -9,6 +9,7 @@ use App\Models\Country;
 use App\Models\County;
 use App\Models\Office;
 use App\Models\Question;
+use App\Models\Resource;
 use App\Models\Respondent;
 use App\Models\RespondentCategory;
 use App\Models\Source;
@@ -84,5 +85,28 @@ class ReportController extends Controller
 
     public function thanks(){
         return view('front.questionier.thanks');
+    }
+
+    public function show(){
+        $answers = Answer::with(['question', 'country', 'counties', 'sub_counties', 'constituencies', 'wards', 'offices', 'sources', 'media'])->orderBy('created_at','DESC')->get();
+
+        $questions = Question::get();
+
+        $countries = Country::get();
+
+        $counties = County::get();
+
+        $sub_counties = SubCounty::get();
+
+        $constituencies = Constituency::get();
+
+        $wards = Ward::get();
+
+        $offices = Office::get();
+
+        $sources = Source::get();
+        $resources = Resource::get();
+        return view('front.reports', compact('answers','resources'));
+        //return compact('answers');
     }
 }

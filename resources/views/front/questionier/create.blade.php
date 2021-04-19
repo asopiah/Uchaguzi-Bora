@@ -379,7 +379,7 @@
                 height: 4096
             },
             success: function (file, response) {
-                $('form').append('<input type="hidden" name="photo[]" value="' + response.name + '">')
+                $('form').append('<input type="hidden" name="photo" value="' + response.name + '">')
                 uploadedPhotoMap[file.name] = response.name
             },
             removedfile: function (file) {
@@ -402,7 +402,7 @@
                     this.options.addedfile.call(this, file)
                     this.options.thumbnail.call(this, file, file.preview)
                     file.previewElement.classList.add('dz-complete')
-                    $('form').append('<input type="hidden" name="photo[]" value="' + file.file_name + '">')
+                    $('form').append('<input type="hidden" name="photo" value="' + file.file_name + '">')
                 }
                 @endif
             },
@@ -437,7 +437,7 @@
                 size: 1024
             },
             success: function (file, response) {
-                $('form').append('<input type="hidden" name="file[]" value="' + response.name + '">')
+                $('form').append('<input type="hidden" name="file" value="' + response.name + '">')
                 uploadedFileMap[file.name] = response.name
             },
             removedfile: function (file) {
@@ -458,7 +458,7 @@
                     var file = files[i]
                     this.options.addedfile.call(this, file)
                     file.previewElement.classList.add('dz-complete')
-                    $('form').append('<input type="hidden" name="file[]" value="' + file.file_name + '">')
+                    $('form').append('<input type="hidden" name="file" value="' + file.file_name + '">')
                 }
                 @endif
             },

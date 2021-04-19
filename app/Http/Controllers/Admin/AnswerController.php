@@ -45,8 +45,9 @@ class AnswerController extends Controller
         $offices = Office::get();
 
         $sources = Source::get();
+        return compact('answers');
 
-        return view('admin.answers.index', compact('answers', 'questions', 'countries', 'counties', 'sub_counties', 'constituencies', 'wards', 'offices', 'sources'));
+        //return view('admin.answers.index', compact('answers', 'questions', 'countries', 'counties', 'sub_counties', 'constituencies', 'wards', 'offices', 'sources'));
     }
 
     public function create()

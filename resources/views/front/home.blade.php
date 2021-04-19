@@ -18,7 +18,7 @@
             </a>
             <nav class="flex flex-wrap items-center mb-5 text-base md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-gray-200">
                 <a href="#_" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Home</a>
-                <a href="#" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Reported Misuse</a>
+                <a href="{{route('show-reports')}}" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Reported Misuse</a>
                 <a href="#" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">General Election</a>
                 <a href="#" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">By-Election</a>
                 <a href="#" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Referendum</a>
@@ -46,7 +46,7 @@
                 <p class="mb-2 text-base font-medium tracking-tight text-indigo-500 uppercase"></p>
                 <h2 class="text-4xl font-extrabold leading-10 tracking-tight text-gray-900 sm:text-5xl sm:leading-none md:text-6xl lg:text-5xl xl:text-6xl">Testimonials</h2>
                 <p class="my-6 text-lg text-gray-600">Don't just take our word for it, read from our extensive list of reported issues of National Interest.</p>
-                <a href="#_" class="flex items-center justify-center px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md shadow hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo md:py-4 md:text-lg md:px-10">View Reported Misuse</a>
+                <a href="{{route('show-reports')}}" class="flex items-center justify-center px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md shadow hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo md:py-4 md:text-lg md:px-10">View Reported Misuse</a>
             </div>
             <div class="w-full lg:w-1/2">
                 <blockquote class="flex items-center justify-between w-full col-span-1 p-6 bg-white rounded-lg shadow">
